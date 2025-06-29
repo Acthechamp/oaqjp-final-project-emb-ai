@@ -1,7 +1,3 @@
-"""
-Flask server for Emotion Detection Web App using IBM Watson NLP.
-"""
-
 from flask import Flask, request, render_template
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -9,18 +5,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    """
-    Renders the home page with text input form.
-    """
+
     return render_template("index.html")
 
 
 @app.route("/emotionDetector", methods=["GET"])
 def emotion_detection_api():
-    """
-    Processes the input text and returns emotion analysis result.
-    If input is empty or the API fails, a user-friendly message is returned.
-    """
+    
     text_to_analyze = request.args.get("textToAnalyze")
 
     if not text_to_analyze or text_to_analyze.strip() == "":
